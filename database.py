@@ -10,13 +10,17 @@ firebase_admin.initialize_app(cred, {
 
 database = db.reference('competitions')
 
-with open('competitions.json', 'r') as fl:
-    data = fl.read()
-    final_data = json.loads(data)
+with open('competitions_kaggle.json', 'r') as fl:
+    data_kaggle = fl.read()
+    final_data_kaggle = json.loads(data_kaggle)
 
 #print(final_data)
 
-for dat in final_data:
+with open('competitions_analytics_vidya.json', 'r') as fl:
+    data_av = fl.read()
+    final_data_av = json.loads(data_av)
+
+for dat in final_data_av:
     database.push(dat)
 
 print(database.get())
